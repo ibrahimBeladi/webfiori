@@ -45,5 +45,10 @@ class ViewRoutes {
             'route-to'=>'/ExamplePage.php',
             'case-sensitive'=>false
         ]);
+        Router::view([
+            'path'=>'vuetify', 
+            'route-to'=>'VuetifyPage.php',
+            'case-sensitive'=>false
+        ]);
     }
 }
