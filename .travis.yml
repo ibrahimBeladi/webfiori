@@ -23,7 +23,6 @@ os:
     - linux
     # - osx # Services are not supported on osx
     # - windows # The language 'php' is currently unsupported on the Windows Build Environment. 
-
 services:
     - mysql
 addons:
