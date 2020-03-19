@@ -34,7 +34,7 @@ addons:
       - mysql-client
 before_install:
     # remove mongodb to avoid problems
-    - sudo rm /var/lib/mongodb* -vf
+    - sudo rm /var/lib/*mongo* -vf
     #update packages in quite mode.
     - sudo apt-get update
     #install postfix mail server
