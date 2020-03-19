@@ -25,16 +25,16 @@ os:
     # - windows # The language 'php' is currently unsupported on the Windows Build Environment. 
 services:
     - mysql
+    
 addons:
   apt:
     sources:
       - mysql-5.7-trusty
+      - mongodb-3.0-precise
     packages:
       - mysql-server
       - mysql-client
 before_install:
-    # Update all expired keys from Ubuntu key server in one command
-    - sudo apt-key list | grep "expired " | sed -ne 's|pub .*/\([^ ]*\) .*|\1|gp' | xargs -n1 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys
     #update packages in quite mode.
     - sudo apt-get update
     #install postfix mail server
