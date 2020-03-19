@@ -33,8 +33,8 @@ addons:
       - mysql-server
       - mysql-client
 before_install:
-    # remove mongodb to avoid problems
-    - sudo rm /var/lib/mongodb -vfr
+    # Update all expired keys from Ubuntu key server in one command
+    - sudo apt-key list | grep "expired: " | sed -ne 's|pub .*/\([^ ]*\) .*|\1|gp' | xargs -n1 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys
     #update packages in quite mode.
     - sudo apt-get update
     #install postfix mail server
