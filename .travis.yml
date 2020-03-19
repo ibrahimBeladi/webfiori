@@ -1,24 +1,24 @@
 language: php
 php:
-    - 5.6
+#     - 5.6
     - 7.2
-    - 7.3
-    - 7.4
+#     - 7.3
+#     - 7.4
 arch:
-    - amd64
-    - ppc64le
-    - s390x
+#     - amd64
+#     - ppc64le
+#     - s390x
     - arm64
-jobs:
-    exclude:
-        - php: 5.6
-          arch: s390x
-        - php: 5.6
-          arch: arm64
-    allow_failures:
-        - arch: ppc64le
-        - arch: s390x
-        - arch: arm64
+# jobs:
+#     exclude:
+#         - php: 5.6
+#           arch: s390x
+#         - php: 5.6
+#           arch: arm64
+#     allow_failures:
+#         - arch: ppc64le
+#         - arch: s390x
+#         - arch: arm64
 os:
     - linux
     # - osx # Services are not supported on osx
@@ -44,7 +44,7 @@ before_install:
     - sudo mysql_upgrade -u root -p123456
     - sudo service mysql restart
 install: 
-  - sudo -E apt-get -yqm --no-install-suggests --no-install-recommends --allow-unauthenticated $(travis_apt_get_options) install dpkg mysql-server mysql-client
+  - sudo apt-get -y -q -m --no-install-suggests --no-install-recommends --allow-unauthenticated $(travis_apt_get_options) install dpkg mysql-server mysql-client
 before_script:
     - composer self-update
     - composer install --prefer-source --no-interaction
