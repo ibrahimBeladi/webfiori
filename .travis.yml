@@ -25,12 +25,12 @@ os:
     # - windows # The language 'php' is currently unsupported on the Windows Build Environment. 
 services:
     - mysql
-    - mongodb
 addons:
   apt:
     sources:
       - mysql-5.7-trusty
     packages:
+      - dpkg
       - mysql-server
       - mysql-client
 before_install:
