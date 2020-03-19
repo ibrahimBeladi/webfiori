@@ -25,12 +25,11 @@ os:
     # - windows # The language 'php' is currently unsupported on the Windows Build Environment. 
 services:
     - mysql
-    
+    - mongodb
 addons:
   apt:
     sources:
       - mysql-5.7-trusty
-      - mongodb-3.0-precise
     packages:
       - mysql-server
       - mysql-client
@@ -38,7 +37,7 @@ before_install:
     #update packages in quite mode.
     - sudo apt-get -q update
     #install postfix mail server
-    - sudo apt-get install postfix
+    - sudo apt-get -y install postfix
     #create a test database
     - mysql -e 'create database if not exists testing_db;'
     - sudo mysql -e "use mysql; update user set authentication_string=PASSWORD('123456') where User='root'; update user set plugin='mysql_native_password';FLUSH PRIVILEGES;"
