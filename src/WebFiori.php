@@ -44,6 +44,10 @@ use jsonx\JsonX;
 use webfiori\entity\CLI;
 use Exception;
 /**
+ * The time at which the framework was booted in microseconds as a float.
+ */
+define('MICRO_START', microtime(true));
+/**
  * The instance of this class is used to control basic settings of 
  * the framework. Also, it is the entry point of any request.
  * @author Ibrahim
@@ -327,7 +331,12 @@ class WebFiori{
                     $index = 0;
                     $trace = $ex->getTrace();
                     foreach ($trace as $arr){
-                        $stackTrace->add('#'.$index,$arr['file'].' (Line '.$arr['line'].')');
+                        if(isset($arr['file'])){
+                            $stackTrace->add('#'.$index,$arr['file'].' (Line '.$arr['line'].')');
+                        }
+                        else if(isset ($arr['function'])){
+                            $stackTrace->add('#'.$index,$arr['function']);
+                        }
                         $index++;
                     }
                     $j->add('stack-trace',$stackTrace);
