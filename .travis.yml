@@ -44,7 +44,7 @@ before_install:
     - sudo mysql_upgrade -u root -p123456
     - sudo service mysql restart
 install: 
-  - sudo -E apt-get -yq --no-install-suggests --no-install-recommends --allow-unauthenticated $(travis_apt_get_options) install dpkg mysql-server mysql-client
+  - sudo -E apt-get -yqm --no-install-suggests --no-install-recommends --allow-unauthenticated $(travis_apt_get_options) install dpkg mysql-server mysql-client
 before_script:
     - composer self-update
     - composer install --prefer-source --no-interaction
